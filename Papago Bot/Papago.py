@@ -57,7 +57,7 @@ headers = {"X-Naver-Client-Id": id, "X-Naver-Client-Secret": secret}
 @bot.event
 async def on_ready():
     print("봇이 준비됨!\n")
-    print("Papgo API\n") 
+    print(f"{API}\n") 
     while True:
         game = discord.Game(API)
         await bot.change_presence(status=discord.Status.online, activity=game)
