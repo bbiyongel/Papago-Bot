@@ -1,0 +1,4 @@
+Papago 번역
+https://developers.naver.com/products/nmt
+Papago 언어감지
+https://developers.naver.com/products/detectLangs
