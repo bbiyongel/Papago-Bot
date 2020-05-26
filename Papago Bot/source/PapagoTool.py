@@ -5,8 +5,8 @@ config = configparser.RawConfigParser()
 
 def ConfigRead(name, option):
     config.read("config.ini")
-    OptionReadValue = config[name][option]
-    return OptionReadValue
+    ConfigReadValue = config[name][option]
+    return ConfigReadValue
 
 API = ConfigRead("api", "API")
 papagoimage_url = ConfigRead("url", "papagoimage_url")
