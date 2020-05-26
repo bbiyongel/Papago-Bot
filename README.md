@@ -10,3 +10,9 @@ reqeust
 asyncio
 
 configparser
+
+gtts
+
+os
+
+eyed3
