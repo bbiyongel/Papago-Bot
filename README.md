@@ -13,7 +13,16 @@ configparser
 gtts
 os
 eyed3)
+# Start
+Python 3.8.X 설치
 
+묘듈 설치
+
+config.ini 파일을 열고 id 에 네이버 API Client ID 입력
+
+sercet 에 네이버 API Client Sercet 입력 token 에 디스코드 봇 토큰 입력
+
+Papago.py 실행
 # Command
 /번역 <번역할 언어> <번역 결과 언어> <내용> - 내용을 번역합니다.
 
