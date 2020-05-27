@@ -32,15 +32,17 @@ async def 도움말(ctx):
 
 @bot.command(pass_context=True)
 async def 번역(ctx, lang1, lang2, *, text):
-    await ctx.send(embed=PapagoTranslation.Embed(ctx, lang1, lang2, PapagoTranslation.Translation(lang1, lang2, text)))
+    await ctx.send(embed=PapagoTranslation.Embed(ctx, PapagoTool.LangChange(lang1), PapagoTool.LangChange(lang2), PapagoTranslation.Translation(PapagoTool.LangChange(lang1), PapagoTool.LangChange(lang2), text)))
+    PapagoTool.FeedBack(ctx, PapagoTool.LangChange(lang2), PapagoTool.LangChange(lang2), text, PapagoTranslation.Translation(PapagoTool.LangChange(lang1), PapagoTool.LangChange(lang2), text), "Translation")
 
 @bot.command(pass_context=True)
 async def 자동번역(ctx, lang, *, text):
-    await ctx.send(embed=PapagoTranslation.Embed(ctx, PapagoTranslation.Detect(text), lang, PapagoTranslation.Translation(PapagoTranslation.Detect(text), lang, text)))
+    await ctx.send(embed=PapagoTranslation.Embed(ctx, PapagoTranslation.Detect(text), PapagoTool.LangChange(lang), PapagoTranslation.Translation(PapagoTranslation.Detect(text), PapagoTool.LangChange(lang), text)))
+    PapagoTool.FeedBack(ctx, PapagoTranslation.Detect(text), PapagoTool.LangChange(lang), text, PapagoTranslation.Translation(PapagoTranslation.Detect(text), PapagoTool.LangChange(lang), text), "Auto Translation")
 
 @bot.command(pass_context=True)
 async def 사운드번역(ctx, lang, *, text):
-    out = gTTS(text=PapagoTranslation.Translation(PapagoTranslation.Detect(text), lang, text), lang=lang, slow=False)
+    out = gTTS(text=PapagoTranslation.Translation(PapagoTranslation.Detect(text), PapagoTool.LangChange(lang), text), lang=PapagoTool.LangChange(lang), slow=False)
     out.save(f"tts/{ctx.channel.id}.mp3")
     channel = ctx.message.author.voice.channel
     voice = get(bot.voice_clients, guild=ctx.guild)
@@ -54,6 +56,7 @@ async def 사운드번역(ctx, lang, *, text):
     await asyncio.sleep(eyed3.load(f"tts/{ctx.channel.id}.mp3").info.time_secs)
     await voice.disconnect()
     os.remove(f"tts/{ctx.channel.id}.mp3")
+    PapagoTool.FeedBack(ctx, PapagoTranslation.Detect(text), PapagoTool.LangChange(lang), text, PapagoTranslation.Translation(PapagoTranslation.Detect(text), PapagoTool.LangChange(lang), text), "Sound Translation")
 
 @bot.command(pass_context=True)
 async def 번역언어(ctx):
