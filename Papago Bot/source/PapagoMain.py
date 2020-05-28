@@ -28,7 +28,7 @@ async def on_ready():
 
 @bot.command(pass_context=True, aliases=["help"])
 async def 도움말(ctx):
-    await ctx.send(embed=PapagoTool.Embed(ctx, "도움말", PapagoTool.TXTRead("helpdescription")))
+    await ctx.author.send(embed=PapagoTool.Embed(ctx, "도움말", PapagoTool.TXTRead("helpdescription")))
 
 @bot.command(pass_context=True)
 async def 번역(ctx, lang1, lang2, *, text):
@@ -41,7 +41,7 @@ async def 자동번역(ctx, lang, *, text):
     PapagoTool.FeedBack(ctx, PapagoTranslation.Detect(text), PapagoTool.LangChange(lang), text, PapagoTranslation.Translation(PapagoTranslation.Detect(text), PapagoTool.LangChange(lang), text), "Auto Translation")
 
 @bot.command(pass_context=True)
-async def 사운드번역(ctx, lang, *, text):
+async def 음성번역(ctx, lang, *, text):
     out = gTTS(text=PapagoTranslation.Translation(PapagoTranslation.Detect(text), PapagoTool.LangChange(lang), text), lang=PapagoTool.LangChange(lang), slow=False)
     out.save(f"tts/{ctx.channel.id}.mp3")
     channel = ctx.message.author.voice.channel
@@ -57,6 +57,10 @@ async def 사운드번역(ctx, lang, *, text):
     await voice.disconnect()
     os.remove(f"tts/{ctx.channel.id}.mp3")
     PapagoTool.FeedBack(ctx, PapagoTranslation.Detect(text), PapagoTool.LangChange(lang), text, PapagoTranslation.Translation(PapagoTranslation.Detect(text), PapagoTool.LangChange(lang), text), "Sound Translation")
+
+@bot.command(pass_context=True)
+async def 웹번역(ctx):
+    await ctx.send()
 
 @bot.command(pass_context=True)
 async def 번역언어(ctx):
