@@ -59,10 +59,6 @@ async def 음성번역(ctx, lang, *, text):
     PapagoTool.FeedBack(ctx, PapagoTranslation.Detect(text), PapagoTool.LangChange(lang), text, PapagoTranslation.Translation(PapagoTranslation.Detect(text), PapagoTool.LangChange(lang), text), "Sound Translation")
 
 @bot.command(pass_context=True)
-async def 웹번역(ctx):
-    await ctx.send()
-
-@bot.command(pass_context=True)
 async def 번역언어(ctx):
     await ctx.author.send(embed=PapagoTool.Embed(ctx, "번역 언어", PapagoTool.TXTRead("language")))
 
