@@ -1,10 +1,8 @@
 --네이버 파파고 API 등록--
-
 https://developers.naver.com/apps/#/register 에서
 사용 API에 Papago 번역, Papago 언어감지 추가후 등록
 
 --디스코드 봇 등록--
-
 https://discord.com/developers/applications 에서
 등록후 봇 토큰 획득
 
