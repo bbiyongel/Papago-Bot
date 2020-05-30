@@ -18,6 +18,8 @@ subprocess)
 # Start
 Python 3.8.X 설치
 
+FFMPEG 설치
+
 묘듈 설치
 
 config.ini 파일을 열고 id 에 네이버 API Client ID 입력
