@@ -16,7 +16,7 @@ bot.remove_command("help")
 # Start
 @bot.event
 async def on_ready():
-    print(f"{PapagoSub.BLUE}{PapagoSub.BOLD}{PapagoSub.API}\n{PapagoSub.END}")
+    print(f"{PapagoSub.API}\n")
     while True:
         game = discord.Game(PapagoSub.API)
         await bot.change_presence(status=discord.Status.online, activity=game)

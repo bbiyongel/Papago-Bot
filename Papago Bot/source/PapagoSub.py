@@ -17,14 +17,6 @@ headers = {"X-Naver-Client-Id": ConfigRead("option", "id"), "X-Naver-Client-Secr
 translation_url = ConfigRead("url", "translation_url")
 detect_url = ConfigRead("url", "detect_url")\
 
-# Color
-BLUE = '\033[34m'
-YELLOW = '\033[33m'
-GREEN = '\033[32m'
-RED = '\033[31m'
-END = '\033[0m'
-BOLD = '\033[1m'
-
 # Tool
 class Tool:
 
@@ -44,7 +36,7 @@ class Tool:
     @classmethod
     def FeedBack(cls, ctx, lang1, lang2, text, result_text, type):
         if ConfigRead("option", "feedback") == "on":
-            print(f"{GREEN}{BOLD}Type: {type}\n{END}")
+            print(f"Type: {type}\n")
             print(f"{ctx.author}: {text} -> {result_text} ({lang1} -> {lang2})\n")
 
     @classmethod
