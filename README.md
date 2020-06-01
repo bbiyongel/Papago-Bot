@@ -5,7 +5,7 @@
   <img width="256" height="256" src="Papago Bot/Papago.png">
 </p>
 
-사용 묘듈:
+사용 모듈:
 (discord.py
 reqeust
 asyncio
@@ -20,7 +20,9 @@ Python 3.8.X 설치
 
 FFMPEG 설치
 
-묘듈 설치
+pip 모듈 필요
+
+ModuleInstall.py 실행 - 모듈 자동 설치
 
 config.ini 파일을 열고 id 에 네이버 API Client ID 입력
 
