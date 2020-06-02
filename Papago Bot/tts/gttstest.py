@@ -2,15 +2,15 @@
 from gtts import gTTS
 import os
 
-#remove
+# remove
 os.remove("test.mp3")
 
-#input
+# input
 text = input("text: ")
 
-#gtts
+# gtts
 out = gTTS(text=text, lang='ko', slow=False)
 out.save("test.mp3")
 
-#play
+# play
 os.system("start test.mp3")
