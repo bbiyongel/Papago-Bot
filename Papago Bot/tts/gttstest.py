@@ -3,7 +3,8 @@ from gtts import gTTS
 import os
 
 # remove
-os.remove("test.mp3")
+if os.path.exists("test.mp3"):
+    os.remove("test.mp3")
 
 # input
 text = input("text: ")
