@@ -15,7 +15,7 @@ papagoimage_url = ConfigRead("url", "papagoimage_url")
 langlist = ["ko", "en", "ja", "zh-CN", "zh-TW", "es", "fr", "vi", "th", "id"]
 headers = {"X-Naver-Client-Id": ConfigRead("option", "id"), "X-Naver-Client-Secret": ConfigRead("option", "secret")}
 translation_url = ConfigRead("url", "translation_url")
-detect_url = ConfigRead("url", "detect_url")\
+detect_url = ConfigRead("url", "detect_url")
 
 # Tool
 class Tool:
@@ -24,7 +24,7 @@ class Tool:
     def Embed(cls, ctx, title, description):
         embed=discord.Embed(title=f"「{title}」", description=description, color=0x00e00f)
         embed.set_thumbnail(url=papagoimage_url)
-        embed.set_footer(text=API)
+        embed.set_footer(text=API, icon_url=papagoimage_url)
         return embed
 
     @classmethod
@@ -90,5 +90,5 @@ class Translation:
     def Embed(cls, ctx, lang1, lang2, result_text):
         embed=discord.Embed(title=f"「번역 결과 {lang1} -> {lang2}」", description=f"{ctx.author.display_name}: {result_text}", color=0x00e00f)
         embed.set_thumbnail(url=papagoimage_url)
-        embed.set_footer(text=API)
+        embed.set_footer(text=API, icon_url=papagoimage_url)
         return embed
