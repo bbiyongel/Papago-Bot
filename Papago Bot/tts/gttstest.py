@@ -2,16 +2,16 @@
 from gtts import gTTS
 import os
 
-# remove
+# Remove
 if os.path.exists("test.mp3"):
     os.remove("test.mp3")
 
-# input
+# Input
 text = input("text: ")
 
-# gtts
+# Gtts
 out = gTTS(text=text, lang='ko', slow=False)
 out.save("test.mp3")
 
-# play
+# Play
 os.system("start test.mp3")

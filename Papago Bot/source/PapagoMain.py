@@ -47,19 +47,22 @@ async def 자동번역(ctx, lang, *, text):
 async def 음성번역(ctx, lang, *, text):
     out = gTTS(text=PapagoSub.Translation.Translation(PapagoSub.Translation.Detect(text), PapagoSub.Tool.LangChange(lang), text), lang=PapagoSub.Tool.LangChange(lang), slow=False)
     out.save(f"tts/{ctx.channel.id}.mp3")
-    channel = ctx.message.author.voice.channel
-    voice = get(bot.voice_clients, guild=ctx.guild)
-    if voice and voice.is_connected():
-        await voice.move_to(channel)
+    if PapagoSub.ConfigRead("option", "mp3send") == "on":
+        await ctx.send(file=discord.File(f"tts/{ctx.channel.id}.mp3"))
     else:
-        voice = await channel.connect()
-    voice.play(discord.FFmpegPCMAudio(f"tts/{ctx.channel.id}.mp3"))
-    voice.source = discord.PCMVolumeTransformer(voice.source)
-    voice.source.volume = 2
-    await asyncio.sleep(eyed3.load(f"tts/{ctx.channel.id}.mp3").info.time_secs)
-    await voice.disconnect()
+        channel = ctx.message.author.voice.channel
+        voice = get(bot.voice_clients, guild=ctx.guild)
+        if voice and voice.is_connected():
+            await voice.move_to(channel)
+        else:
+            voice = await channel.connect()
+        voice.play(discord.FFmpegPCMAudio(f"tts/{ctx.channel.id}.mp3"))
+        voice.source = discord.PCMVolumeTransformer(voice.source)
+        voice.source.volume = 2
+        await asyncio.sleep(eyed3.load(f"tts/{ctx.channel.id}.mp3").info.time_secs)
+        await voice.disconnect()
+        PapagoSub.Tool.FeedBack(ctx, PapagoSub.Tool.LangChange(PapagoSub.Translation.Detect(text)), PapagoSub.Tool.LangChange(lang), text, PapagoSub.Translation.Translation(PapagoSub.Translation.Detect(text), PapagoSub.Tool.LangChange(lang), text), "Auto Translation")
     os.remove(f"tts/{ctx.channel.id}.mp3")
-    PapagoSub.Tool.FeedBack(ctx, PapagoSub.Tool.LangChange(PapagoSub.Translation.Detect(text)), PapagoSub.Tool.LangChange(lang), text, PapagoSub.Translation.Translation(PapagoSub.Translation.Detect(text), PapagoSub.Tool.LangChange(lang), text), "Auto Translation")
 
 # Language List
 @bot.command(pass_context=True)
