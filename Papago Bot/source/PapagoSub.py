@@ -12,7 +12,7 @@ def ConfigRead(name, option):
 # Value
 API = ConfigRead("api", "API")
 papagoimage_url = ConfigRead("url", "papagoimage_url")
-langlist = ["ko", "en", "ja", "zh-CN", "zh-TW", "es", "fr", "vi", "th", "id"]
+langlist = ["ko", "en", "ja", "zh-CN", "zh-TW", "es", "fr", "vi", "th", "id", "ru"]
 headers = {"X-Naver-Client-Id": ConfigRead("option", "id"), "X-Naver-Client-Secret": ConfigRead("option", "secret")}
 translation_url = ConfigRead("url", "translation_url")
 detect_url = ConfigRead("url", "detect_url")
@@ -63,6 +63,8 @@ class Tool:
             result = "th"
         elif lang == "인도네시아어":
             result = "id"
+        elif lang == "러시아어":
+            result = "ru"
         else:
             result = None
         return result

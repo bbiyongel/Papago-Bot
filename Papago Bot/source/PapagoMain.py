@@ -28,7 +28,7 @@ async def on_ready():
 # Help
 @bot.command(pass_context=True, aliases=["help"])
 async def 도움말(ctx):
-    await ctx.author.send(embed=PapagoSub.Tool.Embed(ctx, "도움말", PapagoSub.Tool.TXTRead("helpdescription")))
+    await ctx.send(embed=PapagoSub.Tool.Embed(ctx, "도움말", PapagoSub.Tool.TXTRead("helpdescription")))
 
 # Translation
 @bot.command(pass_context=True)
@@ -64,12 +64,12 @@ async def 음성번역(ctx, lang, *, text):
 # Language List
 @bot.command(pass_context=True)
 async def 번역언어(ctx):
-    await ctx.author.send(embed=PapagoSub.Tool.Embed(ctx, "번역 언어", PapagoSub.Tool.TXTRead("language")))
+    await ctx.send(embed=PapagoSub.Tool.Embed(ctx, "번역 언어", PapagoSub.Tool.TXTRead("language")))
 
 # API List
 @bot.command(pass_context=True)
 async def API목록(ctx):
-    await ctx.author.send(embed=PapagoSub.Tool.Embed(ctx, "API 목록", PapagoSub.Tool.TXTRead("APIdescription")))
+    await ctx.send(embed=PapagoSub.Tool.Embed(ctx, "API 목록", PapagoSub.Tool.TXTRead("APIdescription")))
 
 # Token
 bot.run(PapagoSub.ConfigRead("option", "token"))
